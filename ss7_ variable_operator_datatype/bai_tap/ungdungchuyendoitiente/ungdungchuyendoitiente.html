@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ứng dụng chuyển đổi tiền tệ</title>
+    <style>
+        #ketquachuyen{
+            color: blue;
+        }
+       button{
+           background-color: blueviolet;
+           color: white;
+       }
+    </style>
+</head>
+<body>
+<form>
+    <table>
+        <tr>
+            <th>Amount</th>
+            <th>From Currency</th>
+            <th>To Currency</th>
+        </tr>
+        <tr>
+            <td><input id="sotien" type="number"> </td>
+            <td><select id="dvtiendau">
+                <option value="vn">Vietnam</option>
+                <option value="usd">USD</option>
+                <option value="eur">EUR</option>
+            </select></td>
+            <td><select id="dvtiencuoi">
+                <option value="usd">USD</option>
+                <option value="eur">EUR</option>
+                <option value="vnd">Vietnam</option>
+            </select></td>
+            <td><button type="button" onclick="convert()">Convert</button></td>
+        </tr>
+    </table>
+    <div id="ketquachuyen"></div>
+</form>
+<script>
+    function convert() {
+        let tyGia = {
+           vn: {
+               usd: 0.000042,
+               eur: 0.000038,
+               vnd: 1
+           },
+           usd: {
+               usd: 1,
+               eur: 0.89,
+               vnd: 23649
+           },
+           eur: {
+               usd: 1.12,
+               eur: 1,
+               vnd: 26540
+           }
+        };
+        let soTien = parseFloat(document.getElementById("sotien").value);
+        let donViTienTeDau = document.getElementById("dvtiendau").value;
+        let donViTienTeCuoi = document.getElementById("dvtiencuoi").value;
+        let ketQua = soTien * tyGia[donViTienTeDau][donViTienTeCuoi];
+        let donViTienTeCuoiText = donViTienTeCuoi.toUpperCase();
+        document.getElementById("ketquachuyen").innerHTML ="Result: "+ketQua.toFixed(2) + " " + donViTienTeCuoiText;
+        }
+
+</script>
+</body>
+</html>

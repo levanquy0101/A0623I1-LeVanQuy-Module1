@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính chu vi hình tròn</title>
+</head>
+<body>
+<form>
+    <h1>Tính chu vi hình tròn</h1>
+    <label>Nhập bán kính hình tròn: </label>
+    <input type="number" id="nhapr">
+    <button type="button" onclick="cvhinhtron()">Tính toán</button>
+    <h2>Kết quả tính toán: </h2>
+    <div id="ketquatinh"></div>
+</form>
+<script>
+    function cvhinhtron() {
+        let nhapbankinh =  parseFloat(document.getElementById("nhapr").value);
+        let tinhcv = Math.PI * nhapbankinh * 2;
+        document.getElementById("ketquatinh").innerHTML = "Chu vi hình tròn: " + tinhcv;
+    }
+</script>
+</body>
+</html>

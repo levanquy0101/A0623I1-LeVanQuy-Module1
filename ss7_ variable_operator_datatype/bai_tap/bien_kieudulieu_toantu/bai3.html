@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính diện tích hình tròn</title>
+</head>
+<body>
+<form>
+    <h1>Tính diện tích hình tròn</h1>
+    <label>Nhập bán kính hình tròn: </label>
+    <input id="nhapr" type="number">
+    <button type="button" onclick="dthinhtron()">Tính toán</button>
+    <h2>Kết quả tính toán: </h2>
+    <div id="kqdt"></div>
+</form>
+<script>
+    function dthinhtron(){
+        let nhapbankinh = parseFloat(document.getElementById("nhapr").value);
+        let dientich = Math.PI* nhapbankinh * nhapbankinh;
+        document.getElementById("kqdt").innerHTML = "Diện tích hình tròn là: " + dientich.toFixed(2);
+    }
+</script>
+</body>
+</html>
