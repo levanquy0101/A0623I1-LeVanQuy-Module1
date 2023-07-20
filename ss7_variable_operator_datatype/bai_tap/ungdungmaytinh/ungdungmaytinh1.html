@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ứng dụng máy tính</title>
+    <style>
+        #ketquatinh{
+            padding: 10px;
+        }
+
+    </style>
+</head>
+<body>
+<form>
+<h1>Caculator</h1>
+    <input type="number" id="number1">
+    <input type="number" id="number2"><br><br>
+    <button type="button" onclick="cong()">Addition(+)</button>
+    <button type="button" onclick="tru()">Subtraction(-)</button>
+    <button type="button" onclick="nhan()">Multiplication(x)</button>
+    <button type="button" onclick="chia()">Division(/)</button>
+    <div id="ketquatinh"></div>
+</form>
+<script>
+    function cong() {
+        let so1 = parseFloat(document.getElementById("number1").value);
+        let so2 = parseFloat(document.getElementById("number2").value);
+        let cong = so1 + so2;
+        document.getElementById("ketquatinh").innerHTML= "Result Addition: "+cong;
+
+    }
+    function tru() {
+        let so1 = parseFloat(document.getElementById("number1").value);
+        let so2 = parseFloat(document.getElementById("number2").value);
+        let tru = so1 - so2;
+        document.getElementById("ketquatinh").innerHTML= "Result Subtration: "+tru;
+
+    }
+    function nhan() {
+        let so1 = parseFloat(document.getElementById("number1").value);
+        let so2 = parseFloat(document.getElementById("number2").value);
+        let nhan = so1 * so2;
+        document.getElementById("ketquatinh").innerHTML= "Result Multiplication: "+nhan;
+
+    }
+    function chia() {
+        let so1 = parseFloat(document.getElementById("number1").value);
+        let so2 = parseFloat(document.getElementById("number2").value);
+        let chia = so1 / so2;
+        document.getElementById("ketquatinh").innerHTML= "Result Division: "+chia;
+
+    }
+</script>
+</body>
+</html>

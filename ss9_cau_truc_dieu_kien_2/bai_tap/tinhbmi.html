@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính chỉ số cân nặng của cơ thể</title>
+</head>
+<body>
+<form>
+    <label>Nhập cân nặng: </label>
+    <input id="cannang" type="number">
+    <label>Nhập chiều cao: </label>
+    <input id="chieucao" type="number">
+    <button onclick="Tinhbmi()" type="button">Tính BMI</button>
+    <div id="ketqua"></div>
+</form>
+<script>
+    function Tinhbmi() {
+        let weight = parseFloat(document.getElementById("cannang").value);
+        let height = parseFloat(document.getElementById("chieucao").value);
+        let bmi = weight / ( height ^ 2 );
+        document.getElementById("ketqua").innerHTML= "Kết quả là: "+bmi.toFixed(2);
+        if (bmi < 18)
+            document.write("Underweight");
+        else if (bmi < 25.0)
+            document.write("Normal");
+        else if (bmi < 30.0)
+            document.write("Overweight");
+        else
+            document.write("Obese");
+    }
+</script>
+</body>
+</html>
