@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Máy tính đơn giản</title>
+    <style>
+        .container{
+            width: 300px;
+            height: 275px;
+            margin: auto;
+            margin-top: 100px;
+            border: 4px solid black;
+        }
+        .titel{
+            background-color: aqua;
+            height: 25px;
+            text-align: center;
+            font-weight: bolder;
+            font-family: Arial, Helvetica, sans-serif;
+            color: rgb(50, 33, 208);
+            padding: 10px;
+        }
+        .outscreen{
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        #manhienthi{
+            width: 283px;
+            height: 35px;
+            text-align: right;
+            font-size: 28px;
+        }
+        .buttons{
+            margin-top: 7px;
+        }
+        .button{
+            width: 50px;
+            height: 35px;
+            margin-left: 14px;
+            margin-right: 6px;
+            color: blue;
+            font-size: larger;
+            border: 3px solid #dcdcdc ;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="titel">CALCULATOR</div>
+    <div class="outscreen">
+        <input type="text" placeholder="0" id="manhienthi">
+    </div>
+    <div class="buttons">
+        <button type="button" class="button" onclick="item1()">1</button>
+        <button type="button" class="button" onclick="item2()">2</button>
+        <button type="button" class="button" onclick="item3()">3</button>
+        <button type="button" class="button" onclick="item4()">+</button>
+    </div>
+    <div class="buttons">
+        <button type="button" class="button" onclick="item5()">4</button>
+        <button type="button" class="button" onclick="item6()">5</button>
+        <button type="button" class="button" onclick="item7()">6</button>
+        <button type="button" class="button" onclick="item8()">-</button>
+    </div>
+    <div class="buttons">
+        <button type="button" class="button" onclick="item9()">7</button>
+        <button type="button" class="button" onclick="item10()">8</button>
+        <button type="button" class="button" onclick="item11()">9</button>
+        <button type="button" class="button" onclick="item12()">x</button>
+    </div>
+    <div class="buttons">
+        <button type="button" class="button" onclick="item13()">C</button>
+        <button type="button" class="button" onclick="item14()">0</button>
+        <button type="button" class="button" onclick="item15()">=</button>
+        <button type="button" class="button" onclick="item16()">/</button>
+    </div>
+</div>
+<script>
+    function item1(){
+        document.getElementById("manhienthi").value += "1";
+    }
+    function item2(){
+        document.getElementById("manhienthi").value += "2";
+    }
+    function item3(){
+        document.getElementById("manhienthi").value += "3";
+    }
+    function item4(){
+        document.getElementById("manhienthi").value += "+";
+    }
+    function item5(){
+        document.getElementById("manhienthi").value += "4";
+    }
+    function item6(){
+        document.getElementById("manhienthi").value += "5";
+    }
+    function item7(){
+        document.getElementById("manhienthi").value += "6";
+    }
+    function item8(){
+        document.getElementById("manhienthi").value += "-";
+    }
+    function item9(){
+        document.getElementById("manhienthi").value += "7";
+    }
+    function item10(){
+        document.getElementById("manhienthi").value += "8";
+    }
+    function item11(){
+        document.getElementById("manhienthi").value += "9";
+    }
+    function item12(){
+        document.getElementById("manhienthi").value += "*";
+    }
+    function item13(){
+        document.getElementById("manhienthi").value = "";
+    }
+    function item14(){
+        document.getElementById("manhienthi").value += "0";
+    }
+    function item15(){
+        let display = document.getElementById("manhienthi").value;
+        let result = eval(display);
+        document.getElementById("manhienthi").value = result;
+    }
+    function item16(){
+        document.getElementById("manhienthi").value += "/";
+    }
+
+</script>
+</body>
+</html>
