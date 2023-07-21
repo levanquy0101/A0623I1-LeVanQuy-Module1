@@ -8,8 +8,9 @@
             border-collapse: collapse;
             width: 350px;
         }
-        tr:nth-child(1){
+        tr:nth-child(1) {
             border-bottom: 2px solid black;
+        }
     </style>
 </head>
 <body>
@@ -40,7 +41,7 @@
 <script>
     let weight = parseFloat(prompt("Nhập cân nặng: "));
     let height = parseFloat(prompt("Nhập chiều cao: "));
-    let bmi = weight / ( height ^ 2 );
+    let bmi = weight / ( height * height );
     document.getElementById("ketquabmi").innerHTML= "Kết quả là: "
     if (bmi < 18)
         document.write("Underweight");
