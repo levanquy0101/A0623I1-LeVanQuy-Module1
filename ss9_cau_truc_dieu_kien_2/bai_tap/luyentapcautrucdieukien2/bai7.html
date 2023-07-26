@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let a = parseFloat(prompt("Nhập a cho phương trình ax2 + bx + c = 0"));
+    let b = parseFloat(prompt("Nhập b cho phương trình ax2 + bx + c = 0"));
+    let c = parseFloat(prompt("Nhập c cho phương trình ax2 + bx + c = 0"));
+    const delta = b * b - 4 * a * c;
+    if (delta > 0) {
+        const x1 = (-b + Math.sqrt(delta)) / (2 * a);
+        const x2 = (-b - Math.sqrt(delta)) / (2 * a);
+        alert("Nghiệm của phương trình là: "+x1 +" và "+x2);
+    }
+    else if (delta === 0) {
+        const x = -b / (2 * a);
+        alert("Nghiệm của phương trình là: " + x)
+    }
+    else {
+        alert("Phương trình vô nghiệm")
+    }
+</script>
+</body>
+</html>

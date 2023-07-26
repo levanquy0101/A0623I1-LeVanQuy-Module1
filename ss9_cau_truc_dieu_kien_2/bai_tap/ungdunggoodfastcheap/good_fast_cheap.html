@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Toggle Button like iPhone</title>
+    <style>
+        body {
+            width: 500px;
+            height: 200px;
+            margin:auto;
+            margin-top: 100px;
+        }
+
+        .toggle {
+            display: block;
+            width: 70px; /* Độ dài của nút */
+            height: 25px;
+            border-radius: 15px;
+            background-color: #ccc;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .toggle::before {
+            content: "";
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: transform 0.1s ease;
+            position: absolute;
+            top: -3px;
+            left: -2px;
+        }
+
+        input[type="checkbox"].toggle-checkbox1,
+        input[type="checkbox"].toggle-checkbox2,
+        input[type="checkbox"].toggle-checkbox3 {
+            display: none;
+        }
+
+        input[type="checkbox"].toggle-checkbox1:checked + .toggle {
+            background-color: #4cd864; /* Màu nền khi bật */
+        }
+
+        input[type="checkbox"].toggle-checkbox1:checked + .toggle::before {
+            transform: translateX(42px); /* Chỉnh vị trí nút khi bật */
+            background-color: #0f8d24; /* Change color when turned on */
+        }
+
+        input[type="checkbox"].toggle-checkbox2:checked + .toggle {
+            background-color: rgb(41, 156, 234); /* Màu nền khi bật */
+        }
+
+        input[type="checkbox"].toggle-checkbox2:checked + .toggle::before {
+            transform: translateX(42px); /* Chỉnh vị trí nút khi bật */
+            background-color: blue; /* Change color when turned on */
+        }
+
+        input[type="checkbox"].toggle-checkbox3:checked + .toggle {
+            background-color: #ff4500; /* Màu nền khi bật */
+        }
+
+        input[type="checkbox"].toggle-checkbox3:checked + .toggle::before {
+            transform: translateX(42px); /* Chỉnh vị trí nút khi bật */
+            background-color: #990000; /* Change color when turned on */
+        }
+        .full{
+            width: 320px;
+            height: 350px;
+            background-color: #94b4d088;
+        }
+        .noidung{
+            margin-left: 80px;
+            padding-top: 60px;
+        }
+
+    </style>
+</head>
+<body><div class="full">
+    <div class="noidung">
+        <input type="checkbox" id="toggle-btn1" class="toggle-checkbox1" onclick="showAlert1()">
+        <label for="toggle-btn1" class="toggle"><span style="margin-left: 100px;font-weight: 800;font-size: larger;font-family: Arial, Helvetica, sans-serif;">GOOD</span></label><br><br>
+        <input type="checkbox" id="toggle-btn2" class="toggle-checkbox2" onclick="showAlert2()">
+        <label for="toggle-btn2" class="toggle"><span style="margin-left: 100px;font-weight: 800;font-size: larger;font-family: Arial, Helvetica, sans-serif;">CHEAP</span></label><br><br>
+        <input type="checkbox" id="toggle-btn3" class="toggle-checkbox3" onclick="showAlert3()">
+        <label for="toggle-btn3" class="toggle"><span style="margin-left: 100px;font-weight: 1000;font-size: larger;font-family: Arial, Helvetica, sans-serif;">FAST</span></label><br><br>
+        <label style="margin-left: 22px;font-weight: 800;font-size: medium;font-family: Arial, Helvetica, sans-serif;color: #a9a9a9;">ANIMATION BY</label>
+    </div>
+    <label style="margin-left: 30px;font-weight: 800;font-size:medium;font-family: Arial, Helvetica, sans-serif;color: #a9a9a9;">MISSINGCLOUND.COM - © 2017</label>
+</div>
+<script>
+    function showAlert1() {
+        if (document.getElementById("toggle-btn1").checked) {
+            document.getElementById("toggle-btn3").checked = false;
+        }
+    }
+    let toggle2Count = 0;
+    function showAlert2() {
+        if (document.getElementById("toggle-btn2").checked) {
+            toggle2Count++;
+            if (toggle2Count >= 2) {
+                // Nếu số lần bật nút 2 , tắt nút 1
+                document.getElementById("toggle-btn1").checked = false;
+            }
+        }
+    }
+    function showAlert3() {
+        if (document.getElementById("toggle-btn3").checked) {
+            document.getElementById("toggle-btn2").checked = false;
+        }
+    }
+</script>
+</body>
+</html>

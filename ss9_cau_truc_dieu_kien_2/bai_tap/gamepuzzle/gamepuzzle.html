@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game puzzle</title>
+    <style>
+        .fullimage {
+            width: 500px;
+            height: 305px;
+            margin: auto;
+            margin-top: 100px;
+        }
+
+        /* Thêm định nghĩa lớp cho viền sáng khi khớp */
+        .matched {
+            box-shadow: 0 0 10px 5px rgba(21, 255, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="fullimage">
+        <!-- Gán lớp "matched" cho mỗi hình ảnh khi click -->
+        <img src="" id="anh1" style="width: 500px;" onclick="changeImage('anh1')"><br>
+        <img src="" id="anh2" style="width: 500px;" onclick="changeImage('anh2')"><br>
+        <img src="" id="anh3" style="width: 500px;" onclick="changeImage('anh3')"><br>
+    </div> 
+    <script>
+        var images = {
+            anh1: ["download11.jpg", "download21.jpg"],
+            anh2: ["download12.jpg", "download22.jpg"],
+            anh3: ["download13.jpg", "download23.jpg"]
+        };
+
+        var matchedImages1 = ["download11.jpg", "download12.jpg", "download13.jpg"];
+        var matchedImages2 = ["download21.jpg", "download22.jpg", "download23.jpg"];
+
+        function getRandomImage(arr) {
+            var randomIndex = Math.floor(Math.random() * arr.length);
+            return arr[randomIndex];
+        }
+
+        function changeImage(id) {
+            var img = document.getElementById(id);
+            var randomImageSrc = getRandomImage(images[id]);
+            img.src = randomImageSrc;
+
+            // Gọi hàm kiểm tra khớp ba ảnh khi hình ảnh được thay đổi
+            checkMatching();
+        }
+
+        function checkMatching() {
+            var img1 = document.getElementById("anh1");
+            var img2 = document.getElementById("anh2");
+            var img3 = document.getElementById("anh3");
+
+            // Kiểm tra xem ba ảnh có khớp đúng với ảnh ghép hay không
+            if (img1.src.includes(matchedImages1[0]) && 
+                img2.src.includes(matchedImages1[1]) && 
+                img3.src.includes(matchedImages1[2]) ||
+                img1.src.includes(matchedImages2[0]) && 
+                img2.src.includes(matchedImages2[1]) && 
+                img3.src.includes(matchedImages2[2]) ) {
+                // Nếu ba ảnh khớp, thêm lớp "matched" để làm sáng viền
+                img1.classList.add("matched");
+                img2.classList.add("matched");
+                img3.classList.add("matched");
+            } else {
+                // Nếu không khớp, loại bỏ lớp "matched" nếu có
+                img1.classList.remove("matched");
+                img2.classList.remove("matched");
+                img3.classList.remove("matched");
+            }
+        }
+
+        // Gọi hàm thay đổi ảnh khi trang web được tải lần đầu tiên
+        changeImage('anh1');
+        changeImage('anh2');
+        changeImage('anh3');
+    </script> 
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let giuaky = parseFloat(prompt("Nhập số điểm thi giữa kỳ: "));
+    let cuoiky = parseFloat(prompt("Nhập số điểm thi cuối kỳ: "));
+    let diemhocluc = (giuaky+cuoiky+cuoiky)/3;
+    if (giuaky>0 && giuaky<=10 && cuoiky>0 && cuoiky<=10){
+    if (diemhocluc<5){
+        alert("Xếp loại học lực Yếu")
+    }
+    else if(diemhocluc<6.5){
+        alert("Xếp loại học lực Trung bình")
+    }
+    else if(diemhocluc<8)
+        alert("Xếp loại học lực Khá")
+    else if(diemhocluc<10){
+        alert("Xếp loại học lực Giỏi")
+    }}else {
+        alert("Nhập số điểm sai, vui lòng nhập lại")
+    }
+
+</script>
+</body>
+</html>
