@@ -2,9 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In hình chữ nhật</title>
 </head>
 <body>
-$END$
+<script>
+    function hinha(){
+        for (let a=0;a<21;a++){
+            document.write("*");
+        }
+    }
+    function hinhb(){
+        for (let b=0;b<21;b++){
+            if(b===0 || b===20){
+                document.write("*")
+            }else{
+                document.write("&nbsp&nbsp")
+            }
+        }
+    }
+    hinha();
+    document.write("<br>");
+    for(i=0;i<5;i++){
+        hinhb();
+        document.write("<br>");
+    };
+    hinha();
+</script>
 </body>
 </html>

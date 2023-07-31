@@ -2,9 +2,66 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .game{
+            width: 300px;
+            height: 100px;
+            background-color: aqua;
+            margin: 100px auto auto;
+        }
+        h1{
+            text-align: center;
+            color: red;
+        }
+        .nutplay{
+            width: 100px;
+            height: 30px;
+            margin-left: 100px;
+            background-color: yellow;
+            border: 2px solid green;
+        }
+        .nutplay:hover{
+            background-color: blue;
+        }
+    </style>
 </head>
 <body>
-$END$
+<div class="game">
+    <h1>Game đoán số</h1>
+    <button type="button" class="nutplay" onclick="Play()">Chơi</button>
+</div>
+<script>
+    function Play(){
+        for(;;){
+            let min = parseInt(prompt("Nhập số nhỏ nhất trong khoảng đoán: "));
+            let max = parseInt(prompt("Nhập số lớn nhất trong khoảng đoán: "));
+            if(min<max){
+                let numbering = Math.floor(Math.random() * (max-min+1)) + min;
+                for(let i=3;i>0;i--){
+                    const impugner = parseInt(prompt("Nhập giá trị đoán trong khoảng đoán từ: " + min + " đến " + max));
+                    if(impugner === numbering){
+                        alert("Chúc mừng bạn đã đoán đúng. Kết thúc lượt chơi")
+                        break;
+                    }else if(i===1){
+                        alert("Bạn đã hết lượt đoán. Bắt đầu lại trò chơi")
+                        break;
+                    }
+                    else if(impugner<numbering){
+                        alert("Bạn đã đoán số nhỏ hơn so với kết quả. Vui lòng nhập lại")
+                    }else{
+                        alert("Bạn đã đoán số lớn hơn so với kết quả. Vui lòng nhập lại")
+                    }
+                }
+                break;
+            }
+            else {
+                alert("Khoảng trước phải nhỏ hơn khoảng sau. Vui lòng nhập lại!")
+            }
+        }
+
+    }
+</script>
 </body>
 </html>

@@ -1,10 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In số nguyên tố</title>
 </head>
 <body>
-$END$
+<script>
+    // Bước 1: Khai báo biến số nguyên numbers và nhập giá trị từ bàn phím
+    const numbers = parseInt(prompt("Nhập số nguyên tố cần in ra:"));
+
+    // Bước 2: Khai báo biến count và gán giá trị 0
+    var count = 0;
+
+    // Bước 3: Khai báo biến N và gán giá trị 2
+    let N = 2;
+
+    // Hàm kiểm tra xem một số có phải là số nguyên tố hay không
+    function isPrime(num) {
+        if (num <= 1) return false;
+        if (num <= 3) return true;
+        if (num % 2 === 0 || num % 3 === 0) return false;
+        var i = 5;
+        while (i * i <= num) {
+            if (num % i === 0 || num % (i + 2) === 0) return false;
+            i += 6;
+        }
+
+        return true;
+    }
+
+    // Bước 4: In ra các số nguyên tố
+    while (count < numbers) {
+        if (isPrime(N)) {
+            document.write(N+"<br>") // In ra giá trị của N
+            count++; // Tăng giá trị của count lên 1
+        }
+        N++; // Tăng giá trị của N lên 1 để kiểm tra số tiếp theo
+    }
+</script>
 </body>
 </html>

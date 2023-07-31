@@ -2,9 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 <body>
-$END$
+<script>
+    let nhan;
+    nhan = "<table border='1' width='1300' cellspacing='1' cellpadding='3'>"
+    for (i = 1; i <= 9; i++) {
+        nhan = nhan + "<tr>";
+        for (j = 2; j <= 9; j++) {
+            nhan = nhan + "<td>" + j +"x" +i +"=" + j*i+"</td>";
+        }
+        nhan = nhan + "</tr>";
+    }
+    nhan = nhan + "</table>";
+    document.write(nhan);
+</script>
 </body>
 </html>

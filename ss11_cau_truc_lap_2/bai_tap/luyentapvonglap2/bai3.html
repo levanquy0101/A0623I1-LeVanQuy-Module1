@@ -2,9 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tạo hình tam giác vuông</title>
 </head>
 <body>
-$END$
+<script>
+    // Hình tam giác vuông 1
+    let sao="*";
+    let abc = "";
+    for(let i=0;i<5;i++){
+        abc=abc+sao;
+        document.write(abc+"<br>")
+    }
+    document.write("<br>");
+    //Hình tam giác vuông 2
+    let row = "";
+    for (let x = 0; x<5; x++) {
+        row = "";
+        for (let y = x; y<5; y++) {
+            row += "*";
+        }
+        document.write(row + "<br>");
+    }
+    document.write("<br>");
+    //Hình tam giác vuông 3
+    let mno="";
+    for (let c=0;c<5;c++){
+        var def="";
+        for (let f=c+1;f<5;f++){
+            def+="&nbsp&nbsp";}
+        document.write(def)
+        for(let h=0;h<1;h++){
+            mno+="*";
+            document.write(mno+"<br>")
+        }}
+    document.write("<br>");
+    //Hình tam giác vuông 4
+    for(let p=1;p<=5;p++) {
+        let uio = "";
+        for(let q=1;q<p;q++) {
+            uio += '&nbsp&nbsp;';
+        }
+        for(let k= 1; k<=6-p;k++){
+            uio += '*';
+        }
+        document.write(uio + "<br>");
+    }
+</script>
 </body>
 </html>

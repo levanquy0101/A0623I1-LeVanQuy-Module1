@@ -2,9 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 <body>
-$END$
+<script>
+    for (;;){
+        let nhietdo = parseInt(prompt("Nhập nhiệt độ: "))
+        if(nhietdo>100){
+            alert("Giảm nhiệt độ")
+        }else if(nhietdo<20){
+            alert("Tăng nhiệt độ")
+        }else {
+            alert("Nhiệt độ hiện tại trong khoảng 20 đến 100 độ. Không cần điều chỉnh.")
+            break;
+        }}
+</script>
 </body>
 </html>

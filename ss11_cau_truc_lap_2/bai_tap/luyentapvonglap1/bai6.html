@@ -2,9 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+    let i=0;
+    let z=0;
+    let sum = 0;
+    while (i<30){
+        if(z % 7 === 0){
+            sum = sum + z;
+            i++;
+        }
+        z++;
+    }
+    document.write(sum)
+</script>
 </body>
 </html>
