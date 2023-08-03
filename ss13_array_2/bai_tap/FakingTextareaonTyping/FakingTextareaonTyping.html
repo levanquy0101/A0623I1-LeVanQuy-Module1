@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faking Textarea on Typing</title>
+    <style>
+        .container{
+            text-align: center;
+            width: 100%;
+            margin:auto;
+            margin-top: 100px;
+        }
+        textarea{
+            margin-left: 105px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 style="margin-left: 100px;">Type anthing slowly</h1>
+    <div class="text">
+        <textarea rows="13" cols="50" oninput="clickkey()" id="result"></textarea></div>
+</div>
+<script>
+    var words = ['T', 'Ô', 'I',' ','L','À',' ','M','Ộ','T',' ','Đ','Ứ','A',' ','N','G','Ố','C',' ','!','!'];
+    var count = 0;
+    function clickkey() {
+        if (count < words.length) {
+            var joinedString = words.slice(0, count + 1).join('');
+            document.getElementById("result").value = joinedString;
+            count++;
+        } else {
+            count=0;
+            document.getElementById("result").value = "";
+        }
+    }
+</script>
+</body>
+</html>

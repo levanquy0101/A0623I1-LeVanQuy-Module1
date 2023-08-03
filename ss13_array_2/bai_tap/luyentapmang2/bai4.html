@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let word = prompt("Nhập chuỗi: ");
+    let count = 0;
+    for(let i=0; i<word.length; i++){
+        if (word[i] === ' ' && word[i+1] !==' ') {
+            count++
+        }
+    }
+    alert("Số từ trong một chuỗi là: "+(count+1))
+</script>
+</body>
+</html>

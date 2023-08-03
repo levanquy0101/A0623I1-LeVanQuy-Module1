@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    let count = 0;
+    let numbers = [];
+    for (let i =1;i<=10; i++){
+        numbers[i]= prompt("Nhập số thứ: "+i)
+    }
+    for (let i=0;i<numbers.length;i++){
+        if(numbers[i]>=10){
+            count++;
+        } }
+    document.writeln("Có "+count+" số nguyên lớn hơn 10")
+</script>
+</body>
+</html>

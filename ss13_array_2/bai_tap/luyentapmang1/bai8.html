@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let number = [];
+    for (let i =0; i<10;i++){
+        number[i] = parseInt(prompt("Nhập số nguyên thứ: "+ (i+1)))
+    }
+    alert(number.sort((a,b) => {
+        return b-a;
+    }).join("-"))
+</script>
+</body>
+</html>

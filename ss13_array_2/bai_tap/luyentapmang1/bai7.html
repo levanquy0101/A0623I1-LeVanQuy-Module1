@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let number = [];
+    let check =false;
+    for (let i =0; i<10;i++){
+        number[i] = parseInt(prompt("Nhập số nguyên thứ: "+ (i+1)))
+    }
+    let V =parseInt(prompt("Nhâp số nguyên V: "));
+    for (let i = 0; i < number.length; i++) {
+        if (V === number[i]) {
+            number.splice(i,1)
+            check= true;
+            break;
+        }
+    }
+    if(check){
+        alert("Dãy số nguyên sau khi loại V: "+number)
+    }else {
+        alert("V không thuộc trong mảng đã cho")
+    }
+
+</script>
+</body>
+</html>

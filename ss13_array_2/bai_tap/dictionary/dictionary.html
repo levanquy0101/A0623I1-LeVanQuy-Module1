@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form{
+            width: 360px;
+            margin: auto;
+            margin-top: 50px;
+            background-color: #d3d3d3;
+            text-align: center;
+            height: 160px;
+            color: red;
+            border: 3px solid green;
+        }
+        #English{
+            width: 210px;
+            height: 25px;
+            margin-right: 20px;
+            font-size:medium;
+        }
+    </style>
+</head>
+<body>
+<form>
+    <h1>TỪ ĐIỂN ANH - VIỆT</h1>
+    <input type="text" id="English">
+    <input type="button" value="Dịch" onclick="dictionary()" style="height: 29px;width: 50px;" >
+    <div id="Vietnamese" style="margin-top: 10px;color: green;"></div>
+</form>
+<script>
+    let eng = ['Apple','Banana','Cherry','Orange','Lemon'];
+    let vn = ['Quả Táo','Trái Chuối','Anh Đào','Quả Cam','Trái Chanh'];
+    function dictionary() {
+        const input = document.getElementById('English').value;
+        const index = eng.indexOf(input);
+        const result = document.getElementById('Vietnamese');
+
+        if (index !== -1) {
+            result.innerText = vn[index];
+        } else {
+            result.innerText = 'Không tìm thấy từ này trong từ điển.';
+        }
+    }
+</script>
+</body>
+</html>

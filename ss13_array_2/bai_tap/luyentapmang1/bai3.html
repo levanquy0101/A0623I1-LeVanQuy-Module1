@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Tiêu đề</title>
+</head>
+<body>
+<script>
+    const n = prompt("Nhập số lượng số trong mảng ban đầu");
+    let a = [];
+    for (let i = 0; i < n; i++) {
+        const tmp = +prompt(`Nhập số thứ ${i + 1}`);
+        a.push(tmp);
+    }
+    console.log(`Trung bình: ${a.reduce((x, y) => x + y) / n}`);
+</script>
+</body>
+</html>

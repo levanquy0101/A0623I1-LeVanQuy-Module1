@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Prime number check</h1>
+<input type="number" id="check" oninput="isPrime()">
+<div id="output"></div>
+<script>
+function isPrime() {
+    let number = true;
+    const isnumber = document.getElementById("check").value;
+    for (let i=2;i<isnumber;i++){
+        if(isnumber % i ===0){
+            number =  false;
+        }
+    }
+    if(isnumber<=1){
+        document.getElementById("output").innerHTML= (isnumber)+" Là số nhỏ hơn hoặc bằng 1 nên không phải là số nguyên tố";
+    }
+    else if(number){
+        document.getElementById("output").innerHTML= (isnumber)+" Là số nguyên tố";
+    }else{
+        document.getElementById("output").innerHTML= (isnumber)+" Không phải là số nguyên tố";
+    }
+}
+</script>
+</body>
+</html>
