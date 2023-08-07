@@ -8,10 +8,10 @@
 <body>
 <script>
     let numbers = [];
-    for (let i=0;i<10;i++){
-        numbers[i]=prompt("Nhập số nguyên thứ: "+i);
+    for (let i = 0; i < 10; i++) {
+        numbers[i] = parseFloat(prompt("Nhập số nguyên thứ: " + i));
     }
-    let max = numbers[0];
+    let max = 0;
     let index = 0;
     for (let i = 0; i < numbers.length; i++) {
         if (numbers[i] > max) {

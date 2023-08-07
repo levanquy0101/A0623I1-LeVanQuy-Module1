@@ -6,13 +6,20 @@
 </head>
 <body>
 <script>
+    let max=0;
     const n = prompt("Nhập số lượng số trong mảng ban đầu");
     let a = [];
     for (let i = 0; i < n; i++) {
-        const tmp = +prompt(`Nhập số thứ ${i + 1}`);
-        a.push(tmp);
+        a[i]= +prompt(`Nhập số thứ ${i + 1}`);
+
     }
-    console.log(`Trung bình: ${a.reduce((x, y) => x + y) / n}`);
+    for(let i=0;i<a.length;i++){
+        if(a[i]>max){
+            max=a[i];
+        }
+    }
+    alert("Max: "+ max)
+    alert(`Trung bình: ${a.reduce((x, y) => x + y) / n}`);
 </script>
 </body>
 </html>

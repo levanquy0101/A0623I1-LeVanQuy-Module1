@@ -1,42 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>In số nguyên tố</title>
+    <title>Số nguyên tố đầu tiên</title>
 </head>
 <body>
 <script>
-    // Bước 1: Khai báo biến số nguyên numbers và nhập giá trị từ bàn phím
-    const numbers = parseInt(prompt("Nhập số nguyên tố cần in ra:"));
+    let numbers = parseInt(prompt("Nhập số lượng số nguyên tố: "));
+    let count = 0;
 
-    // Bước 2: Khai báo biến count và gán giá trị 0
-    var count = 0;
-
-    // Bước 3: Khai báo biến N và gán giá trị 2
-    let N = 2;
-
-    // Hàm kiểm tra xem một số có phải là số nguyên tố hay không
-    function isPrime(num) {
-        if (num <= 1) return false;
-        if (num <= 3) return true;
-        if (num % 2 === 0 || num % 3 === 0) return false;
-        var i = 5;
-        while (i * i <= num) {
-            if (num % i === 0 || num % (i + 2) === 0) return false;
-            i += 6;
+    //Kiểm tra 1 số có phải số nguyên tố hay không
+    function check(n) {
+        if (n < 2) {
+            return false;
+        } else {
+            for (let i = 2; i < n; i++) {
+                if (n % i === 0)
+                    return false;
+            }
         }
-
         return true;
     }
 
-    // Bước 4: In ra các số nguyên tố
+    document.write("<h2>" + numbers + " số nguyên tố dầu tiên là :</h2> <br>")
+    //Dùng while để hiển thị số nguyên tố
+    let n = 2;
     while (count < numbers) {
-        if (isPrime(N)) {
-            document.write(N+"<br>") // In ra giá trị của N
-            count++; // Tăng giá trị của count lên 1
+        if (check(n)) {
+            document.write(n + " ");
+            count++;
         }
-        N++; // Tăng giá trị của N lên 1 để kiểm tra số tiếp theo
+        n++;
     }
 </script>
 </body>
