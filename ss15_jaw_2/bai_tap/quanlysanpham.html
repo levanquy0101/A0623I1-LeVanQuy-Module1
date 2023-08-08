@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #openPopup{
+      float: right;
+      background-color: #33a91b;
+      color: white;
+      width: 100px;
+      height: 30px;
+      font-size: medium;
+      border: 0;
+      border-radius: 5px;
+      margin-right: 5%;
+    }
+    table{
+      text-align: left;
+      width: 100%;
+    }
+    th{
+      font-size: 18px;
+    }
+    td{
+      height: 30px;
+    }
+    td button{
+      background-color:#33a91b;
+      color: white;
+      height: 30px;
+      width: 60px;
+      border: 0;
+      border-radius: 5px;
+    }
+    tr:nth-child(odd){
+      background-color: #d3d3d3;
+    }
+    tr:nth-child(odd):hover{
+      background-color: #fff262e3;
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .popup-content {
+      background-color: rgb(255, 255, 255);
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+    #productname {
+      margin-left: 20px;
+      width: 50%;
+      height: 20px;
+      margin-bottom: 10px;
+    }
+    #price{
+      margin-left: 79px;
+      width: 50%;
+      height: 20px;
+      margin-bottom: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<form>
+  <div>
+    <h2>Add New Product <input id="openPopup" type="button" value="Add New"></h2>
+    <div class="popup" id="popup">
+      <div class="popup-content">
+        <h2 style="color: #33a91b;">Add New Product</h2>
+        <label>Product Name:</label>
+        <input type="text" id="productname">
+        <br>
+        <label>Price:</label>
+        <input type="text" id="price">
+        <br>
+        <input type="button" id="save" value="Save" onclick="savenew()" style="background-color: #33a91b; border-radius: 5px;color: yellow;">
+        <input type="button" id="cacel" value="Cacel" style="background-color: red; border-radius: 5px;color: yellow;">
+      </div>
+    </div>
+  </div>
+  <div class="displayall">
+    <h2>Display All Product</h2>
+  </div>
+</form>
+<table id="myTable">
+  <tr>
+    <th style="width: 5%;">ID</th>
+    <th style="width: 20%;">Product Name</th>
+    <th style="width: 20%;">Price</th>
+    <th style="width: 15%;"></th>
+    <th style="width: 15%;"></th>
+    <th style="color: red;width: 10%;" id="countnumber">2 products</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Sony Xperia</td>
+    <td>1500 USD</td>
+    <td><button onclick="editRow(this)">Edit</button></td>
+    <td><button onclick="deleteRow(this)">Delete</button></td>
+
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Samsung Galaxy</td>
+    <td>1000 USD</td>
+    <td><button onclick="editRow(this)">Edit</button></td>
+    <td><button onclick="deleteRow(this)" id="delete">Delete</button></td>
+
+  </tr>
+</table>
+<script>
+  // Mở popup
+  document.getElementById("openPopup").addEventListener("click", function() {
+    document.getElementById("popup").style.display = "flex";
+  });
+  //Cacel popup
+  document.getElementById("cacel").addEventListener("click", function() {
+    document.getElementById("popup").style.display = "none";
+  });
+  // Hàm thêm sản phẩm
+  let newpropri = [];
+  let numberid =3;
+  let buttondelete = document.getElementById("delete");
+
+  function savenew(){
+    let pro = document.getElementById("productname").value;
+    let pri = document.getElementById("price").value;
+    var addnewpropri = [pro, pri];
+    // Tạo một dòng mới (<tr>)
+    let newRow = document.createElement("tr");
+
+    // Tạo một ô mới (<td>) và thêm nội dung vào ô
+
+    let newCell = document.createElement("td");
+    newCell.textContent = numberid;
+    newRow.appendChild(newCell);
+    numberid++; // Thêm ô vào dòng
+
+    // Tạo một ô mới khác và thêm nội dung
+    newCell = document.createElement("td");
+    newCell.textContent = pro;
+    newRow.appendChild(newCell); // Thêm ô vào dòng
+
+    // Tạo một ô mới khác và thêm nội dung
+    newCell = document.createElement("td");
+    newCell.textContent = pri;
+    newRow.appendChild(newCell); // Thêm ô vào dòng
+
+    // Tạo một ô mới khác và thêm button edit
+    newCell = document.createElement("td");
+    let editButton = document.createElement("button");
+    editButton.textContent = "Edit";
+    editButton.onclick = function() {
+      editRow(this); // Gọi hàm chỉnh sửa khi nút "Edit" được nhấp
+    };
+    newCell.appendChild(editButton); // Thêm nút "Edit" vào ô
+    newRow.appendChild(newCell); // Thêm ô vào dòng
+
+    // Tạo một ô mới khác và thêm button delete
+    newCell = document.createElement("td");
+    let deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete";
+    deleteButton.onclick = function() {
+      deleteRow(this); // Gọi hàm xóa khi nút "Delete" được nhấp
+    };
+    newCell.appendChild(deleteButton); // Thêm nút "Delete" vào ô
+    newRow.appendChild(newCell); // Thêm ô vào dòng
+
+    // Thêm dòng mới vào bảng (giả sử có một bảng với id là "myTable")
+    let table = document.getElementById("myTable");
+    table.appendChild(newRow); // Thêm dòng vào bảng
+
+    newpropri.push(addnewpropri)
+    console.log(newpropri)
+    updateProductCount();
+  }
+
+  // Hàm xóa sản phẩm
+  function deleteRow(button) {
+    var row = button.parentNode.parentNode;
+    if (confirm("Are you sure to delete this product?")) {
+      row.parentNode.removeChild(row);
+      updateProductCount(); // Gọi hàm cập nhật số lượng sản phẩm
+    }
+  }
+
+  //Hàm edit sản phẩm
+  function editRow(button) {
+    let row = button.parentNode.parentNode;
+    let cells = row.getElementsByTagName("td");
+
+    let productName = cells[1].textContent;
+    let price = cells[2].textContent;
+
+    let newName = prompt("Enter new product name:", productName);
+    let newPrice = prompt("Enter new price:", price);
+
+    if (newName !== null && newPrice !== null) {
+      cells[1].textContent = newName;
+      cells[2].textContent = newPrice;
+    }
+  }
+  function updateProductCount() {
+    let table = document.getElementById("myTable");
+    let rowCount = table.rows.length - 1; // Trừ đi 1 để loại bỏ hàng đầu tiên với các tiêu đề cột
+
+    let countText = rowCount + " product";
+    if (rowCount !== 1) {
+      countText += "s"; // Sử dụng "products" cho số lượng lớn hơn 1
+    }
+
+    document.getElementById("countnumber").textContent = countText; // Cập nhật số lượng sản phẩm
+  }
+
+</script>
+</body>
+</html>

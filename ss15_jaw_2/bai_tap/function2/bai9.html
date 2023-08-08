@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function demSoLanXuatHien(arr, kyTu) {
+        let dem = 0;
+
+        for (const c of arr) {
+            if (c === kyTu) {
+                dem++;
+            }
+        }
+
+        return dem > 0 ? dem : -1;
+    }
+
+    const mangKyTu = ['a', 'b', 'c', 'a', 'd', 'e'];
+    const kyTuCanDem = 'a';
+    const ketQua = demSoLanXuatHien(mangKyTu, kyTuCanDem);
+    if (ketQua !== -1) {
+        console.log(`Ký tự '${kyTuCanDem}' xuất hiện ${ketQua} lần.`);
+    } else {
+        console.log(`Ký tự '${kyTuCanDem}' không xuất hiện trong mảng.`);
+    }
+
+</script>
+</body>
+</html>

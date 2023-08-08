@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    const name = ["Polaris", "Aldebaran", "Deneb", "Vega", "Altair", "Dubhe", "Regulus"];
+    const star = ["Ursa Minor", "Tarurus", "Cygnus", "Lyra", "Aquila", "Ursa Major", "Leo"];
+
+    function str(){
+        let check = false;
+        const input = prompt("Nhập tên ngôi sao: ");
+        for (let i =0; i<name.length; i++){
+            if(name[i] === input){
+                check = true;
+                alert("Chòm sao của ngôi sao đó là: "+star[i])
+                break;
+            }
+
+        }if(!check){
+            alert("Không tìm thấy tên ngôi sao trùng khớp trong danh sách")
+        }
+    }
+    str();
+</script>
+</body>
+</html>

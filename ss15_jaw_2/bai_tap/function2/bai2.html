@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // Định nghĩa hàm tính
+    function tinhDienTich(r) {
+        return r*r*Math.PI;
+    }
+    function tinhChuvi(r) {
+        return 2*r*Math.PI;
+    }
+
+    // Gọi hàm với một số bất kỳ
+    var soBatKy = parseFloat(prompt("Nhập số: "));
+    var ketQua1 = tinhDienTich(soBatKy);
+    alert("Diện tích khi r= " + soBatKy + " là: " + ketQua1.toFixed(2));
+    var ketQua2 = tinhChuvi(soBatKy);
+    alert("Chu vi khi r= " + soBatKy + " là: " + ketQua2.toFixed(2));
+
+</script>
+</body>
+</html>
