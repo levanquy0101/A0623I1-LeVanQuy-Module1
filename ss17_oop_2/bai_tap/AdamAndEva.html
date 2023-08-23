@@ -61,16 +61,16 @@
     }
 
     let appleTree = new Apple(10);
-    let adam = new Human("Adam", "Male", 60);
-    let eve = new Human("Eva", "Female", 55);
+    let adam = new Human("Adam", true, 60);
+    let eva = new Human("Eva", false, 55);
 
     while (!appleTree.isEmpty()) {
         adam.eat(appleTree);
-        eve.eat(appleTree);
+        eva.eat(appleTree);
     }
 
     console.log("Adam's weight:", adam.getWeight());
-    console.log("Eva's weight:", eve.getWeight());
+    console.log("Eva's weight:", eva.getWeight());
 </script>
 </body>
 </html>
