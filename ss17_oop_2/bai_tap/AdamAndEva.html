@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adam and Eve Simulation</title>
+</head>
+<body>
+<script>
+    class Apple {
+        constructor(weight = 10) {
+            this.weight = weight;
+        }
+
+        getWeight() {
+            return this.weight;
+        }
+
+        decrease() {
+            if (this.weight > 0) {
+                this.weight--;
+            }
+        }
+
+        isEmpty() {
+            return this.weight === 0;
+        }
+    }
+
+    class Human {
+        constructor(name, gender, weight) {
+            this.name = name;
+            this.gender = gender;
+            this.weight = weight;
+        }
+
+        say(string) {
+            console.log(string);
+        }
+
+        eat(apple) {
+            if (!apple.isEmpty()) {
+                this.weight++;
+                apple.decrease();
+                this.say(`${this.name} eat an apple.`);
+            } else {
+                this.say(`No more apples to eat.`);
+            }
+        }
+
+        getName() {
+            return this.name;
+        }
+
+        getGender() {
+            return this.gender;
+        }
+
+        getWeight() {
+            return this.weight;
+        }
+    }
+
+    let appleTree = new Apple(10);
+    let adam = new Human("Adam", "Male", 60);
+    let eve = new Human("Eva", "Female", 55);
+
+    while (!appleTree.isEmpty()) {
+        adam.eat(appleTree);
+        eve.eat(appleTree);
+    }
+
+    console.log("Adam's weight:", adam.getWeight());
+    console.log("Eva's weight:", eve.getWeight());
+</script>
+</body>
+</html>

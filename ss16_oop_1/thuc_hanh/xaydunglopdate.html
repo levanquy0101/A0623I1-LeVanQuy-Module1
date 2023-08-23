@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Date Class</title>
+</head>
+<body>
+<script>
+    // Bước 1: Xây dựng lớp MyDate với phương thức khởi tạo có 3 tham số truyền vào
+    let MyDate = function(day, month, year) {
+        this.day = day;
+        this.month = month;
+        this.year = year;
+    };
+
+    // Bước 2: Xây dựng phương thức trả về ngày, tháng, năm
+    MyDate.prototype.getDay = function() {
+        return this.day;
+    };
+    MyDate.prototype.getMonth = function() {
+        return this.month;
+    };
+    MyDate.prototype.getYear = function() {
+        return this.year;
+    };
+
+    // Bước 3: Xây dựng phương thức thiết đặt lại giá trị các thuộc tính day, month, year
+    MyDate.prototype.setDay = function(day) {
+        this.day = day;
+    };
+    MyDate.prototype.setMonth = function(month) {
+        this.month = month;
+    };
+    MyDate.prototype.setYear = function(year) {
+        this.year = year;
+    };
+
+    // Bước 4: Sử dụng lớp vừa tạo. Tạo đối tượng date với ngày:2, tháng:2, năm: 2007:
+    let date = new MyDate(2, 2, 2007);
+
+    // Bước 5: Truy cập phương thức của lớp date như sau:
+    let day = date.getDay(); // 2
+    let month = date.getMonth(); // 2
+    let year = date.getYear(); // 2007
+
+    // Bước 6: Hiển thị ngày, tháng, năm:
+    alert(day + "/" + month + "/" + year);
+
+    // Bước 8: Gọi phương thức để thay đổi ngày, tháng, năm của đối tượng date
+    date.setDay(10);
+    date.setMonth(10);
+    date.setYear(2019);
+
+    // Bước 9: Cài đặt phương thức setDate() để thiết đặt lại ngày, tháng, năm cho đối tượng MyDate
+    MyDate.prototype.setDate = function(day, month, year) {
+        this.day = day;
+        this.month = month;
+        this.year = year;
+    };
+
+    // Bước 10: Cài đặt phương thức toString() để trả về chuỗi ngày tháng năm theo định dạng dd/mm/yyyy.
+    MyDate.prototype.toString = function() {
+        return this.day + "/" + this.month + "/" + this.year;
+    };
+
+    // Gọi phương thức setDate() và toString()
+    date.setDate(10, 10, 2019);
+    alert(date.toString());
+
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rectangle Class Example</title>
+    <style>
+    </style>
+</head>
+<body>
+<canvas id="rectangleCanvas" width="400" height="300"></canvas>
+<script>
+    class Rectangle {
+        constructor(width, height) {
+            this.width = width;
+            this.height = height;
+        }
+
+        calculateArea() {
+            return this.width * this.height;
+        }
+
+        calculatePerimeter() {
+            return 2 * (this.width + this.height);
+        }
+
+        drawOnCanvas(canvasId) {
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext("2d");
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillRect(10, 10, this.width, this.height);
+        }
+    }
+
+    // Khai báo và khởi tạo một đối tượng kiểu Rectangle
+    const rectangle = new Rectangle(parseInt(prompt("Nhập độ rộng: ")),parseInt(prompt("Nhập chiều dài: ")) );
+
+    // Thay đổi chiều dài và chiều rộng của hình chữ nhật
+    rectangle.width = parseInt(prompt("Nhập độ rộng muốn thay đổi: "));
+    rectangle.height = parseInt(prompt("Nhập chiều dài muốn thay đổi: "));
+    // rectangle.drawOnCanvas("rectangleCanvas");
+
+    // In ra màn hình diện tích và chu vi của hình chữ nhật
+    const area = rectangle.calculateArea();
+    const perimeter = rectangle.calculatePerimeter();
+    console.log("Diện tích:", area);
+    console.log("Chu vi:", perimeter);
+    // Hiển thị hình chữ nhật trên màn hình web
+    rectangle.drawOnCanvas("rectangleCanvas");
+</script>
+</body>
+</html>

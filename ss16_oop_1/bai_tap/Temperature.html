@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  class Temperaturn {
+    constructor(C) {
+      this.C =C;
+    }
+    chargeCF(){
+      alert("Độ F là: "+(9/5*this.C+32))
+    }
+    chargeCK(){
+      alert("Độ Kenvin là: "+(this.C+273.15))
+    }
+  }
+  let c1 = new Temperaturn(4)
+  c1.chargeCF()
+  c1.chargeCK()
+</script>
+</body>
+</html>

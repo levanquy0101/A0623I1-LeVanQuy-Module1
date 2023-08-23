@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bật tắt bóng đèn</title>
+</head>
+<body>
+<img id="myImage" src="pic_bulboff.gif" width="100" height="180">
+<p>Click the light bulb to turn on/off the light.</p>
+<button onclick="OnorOff()">On/Off</button>
+<script>
+  class SwitchButton{
+    constructor(){
+      this.status = false;
+      this.lamp  = null;
+    }
+    connectToLamp(electricLamp){
+      return this.lamp = electricLamp;
+    }
+    switchOn(){
+      return this.status = true;
+    }
+    switchOff(){
+      return this.status = false;
+    }
+  }
+
+  class ElectricLamp{
+    constructor(){
+      this.status = false;
+    }
+    turnOn(){
+      var image = document.getElementById('myImage');
+      image.src = "pic_bulbon.gif"
+    }
+    turnOff(){
+      var image = document.getElementById('myImage');
+      image.src = "pic_bulboff.gif"
+    }
+  }
+  var Lamp1 = new ElectricLamp();
+  let btn = new SwitchButton();
+  function OnorOff(){
+    if(btn.connectToLamp(Lamp1)!==null){
+      if(!btn.status){
+        Lamp1.turnOn();
+      }
+      else{
+        Lamp1.turnOff();
+      }
+    }
+    btn.status = !btn.status
+    console.log(btn.status)
+  }
+</script>
+</body>
+</html>

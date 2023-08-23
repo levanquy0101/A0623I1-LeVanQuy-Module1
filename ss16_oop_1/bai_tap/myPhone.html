@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile Phone Design</title>
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+    }
+    body{
+      background-color:#c0c0c0;
+    }
+    #myphone1{
+      margin: 20px 50px;
+      width: 375px;
+      height: 667px;
+      border: 15px solid black;
+      border-radius: 40px;
+      box-sizing: border-box;
+      display: inline-block;
+      background-color: #66ccff;
+    }
+    #myphone2{
+      margin: 20px 50px;
+      width: 375px;
+      height: 667px;
+      border: 15px solid black;
+      border-radius: 40px;
+      box-sizing: border-box;
+      display: inline-block;
+      background-color: #ff9966;
+    }
+    .black{
+      margin: 7px auto;
+      width: 55px;
+      height: 9px;
+      border: 5px solid black;
+      border-radius: 20px ;
+      background-color: black;
+    }
+    #battery1, #battery2{
+      margin-left: 140px;
+      width: 30px;
+      height: 18px;
+      background-color: rgb(78, 220, 22);
+      border-radius: 5px;
+    }
+    #phone1 {
+      margin: 20px 8px;
+      width: 95%;
+      height: 400px;
+      font-size: larger;
+      border: 0 ;
+      background-color:#66ccff;
+
+    }
+    #phone2{
+      margin: 20px 8px;
+      width: 95%;
+      height: 400px;
+      font-size: larger;
+      border: 0 ;
+      background-color:#ff9966;
+    }
+    button{
+      background-color: green;
+      margin:10px 18px;
+      padding: 2px 5px;
+      border-radius: 5px;
+      color: gold;
+      border: 0;
+    }
+    button:hover{
+      background-color: black;
+    }
+    textarea{
+      resize: none;
+      outline: none;
+    }
+    /* #check{
+        width: 60px;
+        height: 20px;
+    } */
+  </style>
+</head>
+<body>
+<div class="MyPhone">
+  <div id="myphone1">
+    <div class="black"><div id="battery1"></div></div>
+    <div class="message">
+      <textarea id="phone1"></textarea>
+    </div>
+    <div>
+      <button type="button" onclick="nokia.statusOnOff()">Status on or off</button>
+      <button type="button" onclick="nokia.Onandoff()">Turning on and off</button>
+      <!-- <button type="button">Compose a message</button> -->
+      <button type="button" onclick="nokia.send()">Send message</button>
+      <button type="button" >Message notification</button>
+      <button type="button" onclick="nokia.viewmess1()">View message</button>
+      <button type="button" onclick="nokia.sent()">View sent message</button>
+    </div>
+  </div>
+  <button type="button" onclick="nokia.Charge()">Charge Nokia</button>
+  <div id="myphone2">
+    <div class="black"><div id="battery2"></div></div>
+    <div class="message">
+      <textarea id="phone2"></textarea>
+    </div>
+    <div>
+      <button type="button" onclick="iphone.statusOnOff()">Status on or off</button>
+      <button type="button" onclick="iphone.Onandoff()">Turning on and off</button>
+      <!-- <button type="button">Compose a message</button> -->
+      <button type="button" onclick="iphone.send()">Send message</button>
+      <button type="button" >Message notification</button>
+      <button type="button" onclick="iphone.viewmess2()">View message</button>
+      <button type="button" onclick="iphone.sent()">View sent message</button>
+    </div>
+  </div>
+  <button type="button" onclick="iphone.Charge()">Charge Iphone</button>
+</div>
+<script>
+  class Mobile{
+    constructor(namephone,phone,battery,myphone,checkbatterry,coloronoff){
+      this.namephone =namephone;
+      this.phone = phone;
+      this.battery = battery;
+      this.myphone = myphone;
+      this.count = 1;
+      this.checkonoff = true;
+      this.checkbatterry = checkbatterry;
+      this.coloronoff = coloronoff;
+      this.noti= [];
+
+    }
+    //Phương thức kiểm tra trang thái bật hay tắt điện thoại
+    statusOnOff(){
+      if(this.checkonoff){
+        document.getElementById(this.phone).value="Thông báo: Điện thoại "+this.namephone+" đang mở";
+      }else{
+        alert("Thông báo: Điện thoại "+this.namephone+" đang bị tắt. Tất cả chức năng sẽ không được hoạt động")
+      }
+      if(this.checkbatterry>=0 && this.checkonoff==true){
+        document.getElementById(this.battery).innerHTML=parseInt(this.checkbatterry--);
+      }else{
+        this.checkonoff= false;
+        document.getElementById(this.phone).value="";
+        document.getElementById(this.myphone).style.backgroundColor="#333333"
+        document.getElementById(this.phone).style.backgroundColor="#333333"
+      }
+    }
+    //Phương thức bật tắt điện thoại
+    Onandoff(){
+      if(this.count % 2==0){
+        this.checkonoff = true;
+        document.getElementById(this.myphone).style.backgroundColor=this.coloronoff;
+        document.getElementById(this.phone).style.backgroundColor=this.coloronoff;
+      }else{
+        this.checkonoff= false;
+        document.getElementById(this.phone).value="";
+        document.getElementById(this.myphone).style.backgroundColor="#333333"
+        document.getElementById(this.phone).style.backgroundColor="#333333"
+      }
+      this.count++;
+      if(this.checkbatterry>=0){
+        document.getElementById(this.battery).innerHTML=parseInt(this.checkbatterry--);
+      }else{
+        this.checkonoff= false;
+        document.getElementById(this.phone).value="";
+        document.getElementById(this.myphone).style.backgroundColor="#333333"
+        document.getElementById(this.phone).style.backgroundColor="#333333"
+      }
+
+    }
+    //Phương thức sạc pin điện thoại
+    Charge() {
+      document.getElementById(this.battery).innerHTML=parseInt(this.checkbatterry=100);
+    }
+    //Phương thức gửi tin nhắn 
+    send(){
+      if(this.checkbatterry>=0 && this.checkonoff==true){
+        document.getElementById(this.battery).innerHTML=parseInt(this.checkbatterry--);
+        var sendmes = document.getElementById(this.phone).value;
+        document.getElementById(this.phone).value="Đã gửi tin nhắn!!!";
+        this.noti.push(sendmes)
+      }else{
+        this.checkonoff= false;
+        document.getElementById(this.phone).value="";
+        document.getElementById(this.myphone).style.backgroundColor="#333333"
+        document.getElementById(this.phone).style.backgroundColor="#333333"
+      }
+    }
+
+    //Phương thức xem tin nhắn đã gửi
+    sent(){
+      if(this.checkbatterry>=0 && this.checkonoff==true){
+        document.getElementById(this.battery).innerHTML=parseInt(this.checkbatterry--);
+        document.getElementById(this.phone).value = "Tin nhắn đã gửi: "+this.noti;
+      }else{
+        this.checkonoff= false;
+        document.getElementById(this.phone).value="";
+        document.getElementById(this.myphone).style.backgroundColor="#333333"
+        document.getElementById(this.phone).style.backgroundColor="#333333"
+      }
+
+    }
+
+    //Phương thức xem tin nhắn đã nhận
+    viewmess1(){
+      if(this.checkbatterry>=0 && this.checkonoff==true){
+        document.getElementById(this.battery).innerHTML=parseInt(this.checkbatterry--);
+        document.getElementById(this.phone).value = "Hộp thư đến: "+iphone.noti;
+      }else{
+        this.checkonoff= false;
+        document.getElementById(this.phone).value="";
+        document.getElementById(this.myphone).style.backgroundColor="#333333"
+        document.getElementById(this.phone).style.backgroundColor="#333333"
+      }
+
+    }
+    viewmess2(){
+      if(this.checkbatterry>=0 && this.checkonoff==true){
+        document.getElementById(this.battery).innerHTML=parseInt(this.checkbatterry--);
+        document.getElementById(this.phone).value = "Hộp thư đến: "+nokia.noti;
+      }else{
+        this.checkonoff= false;
+        document.getElementById(this.phone).value="";
+        document.getElementById(this.myphone).style.backgroundColor="#333333"
+        document.getElementById(this.phone).style.backgroundColor="#333333"
+      }
+
+    }
+
+  }
+
+
+  let nokia = new Mobile("Nokia","phone1","battery1","myphone1"
+          ,document.getElementById("battery1").innerHTML=parseInt(25),"#66ccff" )
+  let iphone = new Mobile("Iphone","phone2","battery2","myphone2"
+          ,document.getElementById("battery2").innerHTML=parseInt(18),"#ff9966" )
+
+</script>
+</body>
+</html>
