@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let luong = parseFloat(prompt("Nhập lương nhân viên: "))
+    var thue;
+    var tienthue;
+    var luongthue;
+    if (luong <7000000){
+        thue = 5/100;
+        tienthue = luong * thue;
+        luongthue = luong - tienthue;
+        alert("Tiền thuế là: "+tienthue)
+        alert("Tiền lương sau thuế: "+luongthue)
+    }else if(luong<15000000){
+        thue = 10/100;
+        tienthue = luong * thue;
+        luongthue = luong - tienthue;
+        alert("Tiền thuế là: "+tienthue)
+        alert("Tiền lương sau thuế: "+luongthue)
+    }else {
+        thue = 20/100;
+        tienthue = luong * thue;
+        luongthue = luong - tienthue;
+        alert("Tiền thuế là: "+tienthue)
+        alert("Tiền lương sau thuế: "+luongthue)
+    }
+</script>
+</body>
+</html>

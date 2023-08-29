@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Menu gọi món</h2>
+<h3>Các loại thức uống như sau:</h3>
+<p>1.Cafe</p>
+<p>2.Cam vắt</p>
+<p>3.Nước ép cà rốt</p>
+<p>4.Nước ép cà chua</p>
+<p>5.Nước lọc</p>
+<p>6.Nước dừa</p>
+<p>7.Thoát gọi món</p>
+<input type="button" value="Ấn để gọi món" onclick="order()">
+
+
+<script>
+    function order() {
+        do {
+            let menu = parseInt(prompt("Vui lòng nhập số theo menu để order món: "))
+            switch (menu){
+                case 1:
+                    var price = parseInt(prompt("Đơn giá của Cafe là: 20.000VND. Vui lòng nhập số lượng: "));
+                    alert("Hóa đơn của bạn có tổng số tiền là: "+price*20000+"VND")
+                    break;
+                case 2:
+                    var price = parseInt(prompt("Đơn giá của Cam vắt là: 15.000VND. Vui lòng nhập số lượng: "));
+                    alert("Hóa đơn của bạn có tổng số tiền là: "+price*15000+"VND")
+                    break;
+                case 3:
+                    var price = parseInt(prompt("Đơn giá của Nước ép cà rốt là: 18.000VND. Vui lòng nhập số lượng: "));
+                    alert("Hóa đơn củ" +
+                        "a bạn có tổng số tiền là: "+price*18000+"VND")
+                    break;
+                case 4:
+                    var price = parseInt(prompt("Đơn giá của Nước ép cà chua là: 19.000VND. Vui lòng nhập số lượng: "));
+                    alert("Hóa đơn của bạn có tổng số tiền là: "+price*19000+"VND")
+                    break;
+                case 5:
+                    var price = parseInt(prompt("Đơn giá của Nước lọc là: 10.000VND. Vui lòng nhập số lượng: "));
+                    alert("Hóa đơn của bạn có tổng số tiền là: "+price*10000+"VND")
+                    break;
+                case 6:
+                    var price = parseInt(prompt("Đơn giá của Cam vắt là: 14.000VND. Vui lòng nhập số lượng: "));
+                    alert("Hóa đơn của bạn có tổng số tiền là: "+price*14000+"VND")
+                    break;
+                case 7:
+                    return false;
+                    break;
+                default:
+                    alert("Số không hợp lệ. Vui lòng nhập lại!")
+                    break;
+            }
+
+        }while (true)
+
+    }
+</script>
+</body>
+</html>

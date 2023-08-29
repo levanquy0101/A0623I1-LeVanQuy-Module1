@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let s1 = prompt("Nhập xâu ký tự thứ nhất: ")//aabcc
+    let s2 = prompt("Nhập xâu ký tự thứ hai: ")//adcaa
+    let check2 =false;
+    let save = [];
+    let count =0;
+    let newSave =[];
+    for(let i=0;i<s1.length;i++){
+        for(let j=0;j<s2.length;j++){
+            if (s1[i] === s2[j]){
+                save.push(s1[i])
+                break;
+            }
+    }}
+
+    for (let x=0;x<save.length;x++) {
+        check2 = false;
+        for (let y = x + 1; y < save.length; y++) {
+            if (save[y] === save[x] ) {
+                check2 =true;
+                break;
+            }
+        }
+        if(!check2){
+            count++;
+            newSave.push(save[x])
+        }
+    }
+
+   alert("Hai xâu s1 và s2 có "+count+" ký tự chung là: "+newSave.join(", "))
+</script>
+</body>
+</html>

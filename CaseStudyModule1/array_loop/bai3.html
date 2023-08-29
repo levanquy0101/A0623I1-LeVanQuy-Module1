@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let numerators = [5, 2, 5];
+    let denominators = [6, 3, 4];
+    let find=[];
+    let max=0;
+    let index;
+    for (let i=0; i<numerators.length && i<denominators.length; i++){
+         find[i] = (numerators[i] / denominators[i]);
+        if(find[i]>max){
+            max = find[i];
+            index =i;
+        }
+    }
+    alert("Giá trị max là: "+numerators[index] +"/"+ denominators[index]+" Nằm ở chỉ số index là: "+index)
+</script>
+</body>
+</html>

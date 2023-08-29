@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hệ thống quản lý học viên CODEGYM</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    /* .container {
+        width: 100vw;
+        height: 100vh;
+        border: 2px solid red;
+        box-sizing: border-box;
+    } */
+    .allbutton{
+      margin-top: 2vh;
+      text-align: center;
+    }
+    button{
+      margin-bottom: 5px;
+      width: 150px;
+      height: 25px;
+      background-color: greenyellow;
+      border-radius: 5px;
+    }
+    .styletable{
+      margin: 10px auto;
+    }
+    .styletable, th, td{
+      border: 2px solid blue;
+      border-collapse: collapse;
+    }
+    th,td{
+      width: 10vw;
+      height: 30px;
+      text-align: center;
+    }
+
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="allbutton">
+    <button class="add" onclick="addRow()">Thêm mới học viên</button>
+    <button class="change" onclick="Edit()">Sửa thông tin học viên</button>
+    <button class="delete" onclick="Delete()">Xóa học viên</button>
+  </div>
+  <table class="styletable" id="studentTable">
+    <tr>
+      <th>Mã học viên</th>
+      <th>Tên</th>
+      <th>Lớp</th>
+      <th>Email</th>
+      <th>Ngày sinh</th>
+      <th>Module</th>
+    </tr>
+
+  </table>
+</div>
+<script>
+  var array = [];
+  function addRow() {
+    const table = document.getElementById('studentTable');
+    const newRow = table.insertRow(); // Tạo một hàng mới
+
+    const cell1 = newRow.insertCell(0); // Tạo ô thứ nhất
+    cell1.textContent = prompt("Nhập Mã học viên: ");
+    array.push(cell1.textContent);
+    console.log(array);
+
+    const cell2 = newRow.insertCell(1); // Tạo ô thứ hai
+    cell2.textContent = prompt("Nhập Tên học viên: ");
+
+    const cell3 = newRow.insertCell(2); // Tạo ô thứ ba
+    cell3.textContent = prompt("Nhập Lớp học viên: ");
+
+    const cell4 = newRow.insertCell(2);
+    cell4.textContent = prompt("Nhập Email học viên: ");
+
+    const cell5 = newRow.insertCell(2);
+    cell5.textContent = prompt("Nhập Ngày sinh học viên: ");
+
+    const cell6 = newRow.insertCell(2);
+    cell6.textContent = prompt("Nhập Module học viên: ");
+  }
+
+
+  function Edit() {
+    const table = document.getElementById('studentTable');
+    var check =false;
+    var index;
+    var f = prompt("Nhập Mã học viên để sửa thông tin: ")
+    for(let i=0;i<array.length;i++){
+      if(f === array[i]){
+        check = true;
+        index = i;
+        break;
+      }
+    }
+    if(check){
+      const row = table.rows[index+1]; // Truy cập hàng thứ hai
+      console.log(array)
+      const cell2 = row.cells[1]; // Truy cập ô thứ hai trong hàng
+      cell2.textContent = prompt("Sửa Tên học viên: ");
+      const cell3 = row.cells[2]; // Truy cập ô thứ hai trong hàng
+      cell3.textContent = prompt("Sửa Lớp học viên: ")
+    }else{
+      alert("Mã học viên không tồn tại!")
+    }
+
+  }
+
+  function Delete () {
+    var check =false;
+    var index;
+    var u = prompt("Nhập Mã học viên để xóa: ")
+    for(let i=0;i<array.length;i++){
+      if(u === array[i]){
+        check = true;
+        index = i + 1;
+        break;
+      }
+    }
+    if(check){
+      document.getElementById("studentTable").deleteRow(index);
+      array.splice(index -1,1)
+      console.log(array)
+    }else{
+      alert("Mã học viên không tồn tại!")
+    }
+  }
+</script>
+</body>
+</html>

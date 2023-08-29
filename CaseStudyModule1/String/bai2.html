@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let word = prompt("Nhập xâu ký tự để kiểm tra: ")
+    const arrayWord = word.toLowerCase().split("");
+    let check= false;
+    let count =0;
+    let save= [];
+    for (let i=0;i<arrayWord.length;i++) {
+        check = false;
+        for (let j = i + 1; j < arrayWord.length; j++) {
+            if (arrayWord[i] === arrayWord[j] ) {
+                check =true;
+            }
+        }
+        if(!check){
+            count++
+            save.push(arrayWord[i])
+        }
+    }
+    alert("Có "+count+" khác nhau là: "+save)
+    // console.log(count);
+    // console.log(save);
+    // console.log(arrayWord);
+</script>
+</body>
+</html>
