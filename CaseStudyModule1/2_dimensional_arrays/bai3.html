@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ma trận m*n</title>
+</head>
+<body>
+<script>
+  var numbers = [];
+  var m = parseInt(prompt("Nhập m để tạo ma trận: "));
+  var n = parseInt(prompt("Nhập n để tạo ma trận: "));
+
+  // Hàm tạo ma trận ngẫu nhiên
+  function generateRandomMatrix(rows, cols) {
+    var matrix = [];
+    for (var i = 0; i < rows; i++) {
+      matrix[i] = [];
+      for (var j = 0; j < cols; j++) {
+        matrix[i][j] = Math.floor((Math.random() * 100));
+      }
+    }
+    return matrix;
+  }
+
+  // Hàm tìm giá trị lớn nhất và nhỏ nhất trong ma trận
+  function findMinMaxInMatrix(matrix) {
+    var max = matrix[0][0];
+    var min = matrix[0][0];
+
+    for (var i = 0; i < matrix.length; i++) {
+      for (var j = 0; j < matrix[i].length; j++) {
+        if (matrix[i][j] > max) {
+          max = matrix[i][j];
+        }
+        if (matrix[i][j] < min) {
+          min = matrix[i][j];
+        }
+      }
+    }
+
+    return { max, min };
+  }
+
+  // Tạo ma trận ngẫu nhiên
+  numbers = generateRandomMatrix(m, n);
+
+  // Tìm giá trị lớn nhất và nhỏ nhất trong ma trận
+  var { max, min } = findMinMaxInMatrix(numbers);
+
+  console.log("Ma trận: ");
+  console.log(numbers);
+
+  console.log(`Giá trị lớn nhất trong ma trận: ${max}`);
+  console.log(`Giá trị nhỏ nhất trong ma trận: ${min}`);
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ma trận m*n</title>
+</head>
+<body>
+<script>
+    var numbers = [];
+    var list = [];
+    var m = parseInt(prompt("Nhập m để tạo ma trận: "));
+    var n = parseInt(prompt("Nhập n để tạo ma trận: "));
+
+    // Hàm kiểm tra số nguyên tố
+    function isPrime(val){
+        if(val < 2){
+            return false;
+        }
+
+        for(let i=2; i<val; i++){
+            if(val%i===0){
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    for (var i = 0; i < m; i++) {
+        numbers[i] = [];
+        for (var j = 0; j < n; j++) {
+            numbers[i][j] = Math.floor((Math.random() * 100));
+            if (isPrime(numbers[i][j])) {
+                list.push(numbers[i][j]);
+            }
+        }
+    }
+
+    console.log("Ma trận số nguyên tố: ");
+    console.log(numbers);
+
+    console.log("Danh sách số nguyên tố trong ma trận: ");
+    console.log(list);
+
+</script>
+</body>
+</html>

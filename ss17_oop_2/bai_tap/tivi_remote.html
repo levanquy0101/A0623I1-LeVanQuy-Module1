@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Remote Tivi</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    body{
+      background-color: #828282;
+    }
+    #screen{
+      width: 650px;
+      height: 365px;
+      border: 8px solid black;
+      margin: 80px auto 2px;
+      border-radius: 10px;
+      background-color: #000000;
+      text-align: right;
+      font-size: 15px;
+      font-weight: bold;
+      color: red;
+    }
+    #black{
+      width: 32%;
+      border-radius: 10px;
+      border: 10px solid black;
+      margin: 0 auto;
+    }
+    #buttonremote{
+      width: 37%;
+      height: 50%;
+      border: 5px solid rgb(73, 170, 222);
+      margin: 50px auto;
+      border-radius: 10px;
+      background-color: orange;
+    }
+    #buttonremote:hover{
+      animation: colorBlink 2s infinite;
+
+    }
+    button{
+      margin: 10px 10px;
+      width: 68px;
+      height: 20px;
+      background-color:#dcdcdc;
+      border-radius: 5px;
+      color: red;
+      font-weight: bold;
+    }
+    button:hover{
+      background-color: yellow;
+    }
+    video{
+      width: 100%;
+      height: 366px;
+    }
+    @keyframes colorBlink {
+      0%, 100% {
+        background-color: rgb(0, 255, 85);
+        opacity: 1;
+      }
+      40% {
+        background-color: rgb(235, 235, 15);
+        opacity: 0.5;
+      }
+      70%{
+        background-color: rgb(0, 200, 255);
+        opacity: 0.5;
+      }
+
+    }
+    p{
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<div id="screen"></div>
+<div id="black"></div>
+<div id="buttonremote">
+  <button onclick="changenumber(0)">0</button>
+  <button onclick="changenumber(1)">1</button>
+  <button onclick="changenumber(2)">2</button>
+  <button onclick="changenumber(3)">3</button>
+  <button onclick="changenumber(4)">4</button>
+  <button onclick="changenumber(5)">5</button>
+  <button onclick="changenumber(6)">6</button>
+  <button onclick="changenumber(7)">7</button>
+  <button onclick="changenumber(8)">8</button>
+  <button onclick="changenumber(9)">9</button>
+  <button onclick="">Change</button>
+  <button onclick="changenumber(11)">Volume +</button>
+  <button onclick="changenumber(12)">Volume -</button>
+  <button onclick="changenumber(13)">On/Off</button>
+</div>
+<p>Web developed by © Le Van Quy</p>
+<script>
+  var volume = 50;
+  var checkOnOff = false;
+  class Remote{
+    constructor(id){
+      this.id = id;
+    }
+    ChangeTheChannel(){
+      if(this.status){
+
+      }
+    }
+    ChangeVolume(){
+      if(this.status){
+        if(this.volume>=0 && this.volume<=100){
+
+        }
+      }
+    }
+  }
+  class Tivi{
+    constructor(channel,volume,status,){
+      this.channel =channel;
+      this.volume = volume;
+      this.status = status;
+    }
+    ChangeTheChannel(){
+
+    }
+    ChangeVolume(){
+
+    }
+
+  }
+  var Remote1 = new Remote();
+  var Tivi1 = new Tivi(4,50,false)
+
+  function changenumber(number){
+    switch(number){
+      case 0:
+        if(checkOnOff){
+          document.getElementById("screen").innerHTML ="";
+          //    Tạo phần tử video và thiết lập thuộc tính
+          var videoElement = document.createElement('video');
+          videoElement.src = 'video/channel0.mp4'; // Đường dẫn tới video
+          videoElement.autoplay = true; // Tự động phát video
+          videoElement.loop = true; // Lặp lại video
+          videoElement.controls = true; // Điều khiển video
+          // Thêm phần tử video vào phần tử mục tiêu trong DOM
+          document.getElementById('screen').appendChild(videoElement);
+        }
+        break;
+      case 1:
+        if(checkOnOff){
+          document.getElementById("screen").innerHTML ="";
+          // Tạo phần tử video và thiết lập thuộc tính
+          var videoElement = document.createElement('video');
+          videoElement.src = 'video/channel1.mp4'; // Đường dẫn tới video
+          videoElement.autoplay = true; // Tự động phát video
+          videoElement.loop = true; // Lặp lại video
+          videoElement.controls = true; // Điều khiển video
+          // Thêm phần tử video vào phần tử mục tiêu trong DOM
+          document.getElementById('screen').appendChild(videoElement);
+        }
+        break;
+      case 2:
+        if(checkOnOff){
+          document.getElementById("screen").innerHTML ="";
+          document.getElementById("screen").style.backgroundColor ="#000000"
+          // Tạo phần tử video và thiết lập thuộc tính
+          var videoElement = document.createElement('video');
+          videoElement.src = 'video/channel2.mp4'; // Đường dẫn tới video
+          videoElement.autoplay = true; // Tự động phát video
+          videoElement.loop = true; // Lặp lại video
+          videoElement.controls = true; // Điều khiển video
+          // Thêm phần tử video vào phần tử mục tiêu trong DOM
+          document.getElementById('screen').appendChild(videoElement);
+        }
+        break;
+      case 3:
+        if(checkOnOff){
+          document.getElementById("screen").innerHTML ="";
+          // Tạo phần tử video và thiết lập thuộc tính
+          var videoElement = document.createElement('video');
+          videoElement.src = 'video/channel3.mp4'; // Đường dẫn tới video
+          videoElement.autoplay = true; // Tự động phát video
+          videoElement.loop = true; // Lặp lại video
+          videoElement.controls = true; // Điều khiển video
+          // Thêm phần tử video vào phần tử mục tiêu trong DOM
+          document.getElementById('screen').appendChild(videoElement);
+        }
+        break;
+      case 4:
+        if(checkOnOff){
+          document.getElementById("screen").innerHTML ="";
+          document.getElementById("screen").style.backgroundColor ="#000000"
+          // Tạo phần tử video và thiết lập thuộc tính
+          var videoElement = document.createElement('video');
+          videoElement.src = 'video/channel4.mp4'; // Đường dẫn tới video
+          videoElement.autoplay = true; // Tự động phát video
+          videoElement.loop = true; // Lặp lại video
+          videoElement.controls = true; // Điều khiển video
+          // Thêm phần tử video vào phần tử mục tiêu trong DOM
+          document.getElementById('screen').appendChild(videoElement);
+        }
+        break;
+      case 5:
+        if(checkOnOff){
+          document.getElementById("screen").innerHTML ="";
+          document.getElementById("screen").style.backgroundColor ="red"
+        }
+        break;
+      case 6:
+        if(checkOnOff){
+          document.getElementById("screen").innerHTML ="";
+          document.getElementById("screen").style.backgroundColor ="#cc99ff"
+        }
+        break;
+      case 7:
+        if(checkOnOff){
+          document.getElementById("screen").innerHTML ="";
+          document.getElementById("screen").style.backgroundColor ="#ff9966"
+        }
+        break;
+      case 8:
+        if(checkOnOff){
+          document.getElementById("screen").innerHTML ="";
+          document.getElementById("screen").style.backgroundColor ="#00ffff"
+        }
+        break;
+      case 9:
+        if(checkOnOff){
+          document.getElementById("screen").innerHTML ="";
+          document.getElementById("screen").style.backgroundColor ="#000077"
+        }
+        break;
+            // case change:
+            //     break;
+      case 11 :
+        if(checkOnOff && volume>=0 && volume<100){
+          document.getElementById("screen").innerHTML = "Âm lượng tăng: "+ ++volume;
+        }
+        break;
+      case 12 :
+        if(checkOnOff && volume>0 && volume<=100){
+          document.getElementById("screen").innerHTML = "Âm lượng giảm: "+ --volume;
+        }
+        break;
+      case 13:
+
+        if(!checkOnOff){
+          document.getElementById("screen").innerHTML ="";
+          document.getElementById("screen").style.backgroundColor ="#dcdcdc"
+        }else{
+          document.getElementById("screen").innerHTML ="";
+          document.getElementById("screen").style.backgroundColor ="#000000"
+        }
+        checkOnOff = !checkOnOff;
+    }
+  }
+
+</script>
+</body>
+</html>

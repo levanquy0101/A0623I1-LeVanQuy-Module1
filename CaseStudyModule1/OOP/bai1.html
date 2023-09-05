@@ -3,135 +3,226 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hệ thống quản lý học viên CODEGYM</title>
+  <title>Xây dựng hệ thống quản lý học viên CODEGYM</title>
   <style>
-    * {
+    *{
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
-    /* .container {
-        width: 100vw;
-        height: 100vh;
-        border: 2px solid red;
-        box-sizing: border-box;
-    } */
-    .allbutton{
-      margin-top: 2vh;
+    .container{
+      width: 100vw;
+      height: 100vh;
+    }
+    header{
+      display: flex;
+      width: 100vw;
+      height: 8vh;
+      font-size: x-large;
+      font-weight: bold;
       text-align: center;
+      background-color: antiquewhite;
+      color: rgb(0, 119, 255);
+      justify-content: center;
+      align-items: center;
+    }
+    .buttonStudent{
+      width: 100vw;
+      height: 8%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     button{
-      margin-bottom: 5px;
-      width: 150px;
-      height: 25px;
+      padding: 3px;
+      margin-left: 1%;
       background-color: greenyellow;
       border-radius: 5px;
     }
-    .styletable{
-      margin: 10px auto;
+    .myTable{
+      width: 100vw;
+      height: 92vh;
+      background-color: #dcdcdc;
     }
-    .styletable, th, td{
-      border: 2px solid blue;
+    table, th,td{
+      margin: 0 auto;
+      width: 80vw;
+      border: 2px solid black;
       border-collapse: collapse;
     }
-    th,td{
-      width: 10vw;
-      height: 30px;
+    td{
       text-align: center;
     }
-
   </style>
 </head>
 <body>
 <div class="container">
-  <div class="allbutton">
-    <button class="add" onclick="addRow()">Thêm mới học viên</button>
-    <button class="change" onclick="Edit()">Sửa thông tin học viên</button>
-    <button class="delete" onclick="Delete()">Xóa học viên</button>
+  <header>Xây dựng hệ thống quản lý học viên CODEGYM</header>
+  <div class="myTable">
+    <div class="buttonStudent">
+      <button onclick="AddStudent()">Thêm mới học viên</button>
+      <button onclick="EditStudent()">Sửa thông tin học viên</button>
+      <button onclick="DeleteStudent()">Xóa học viên</button>
+    </div>
+    <table id="mystudent"></table>
   </div>
-  <table class="styletable" id="studentTable">
-    <tr>
-      <th>Mã học viên</th>
-      <th>Tên</th>
-      <th>Lớp</th>
-      <th>Email</th>
-      <th>Ngày sinh</th>
-      <th>Module</th>
-    </tr>
-
-  </table>
 </div>
 <script>
-  var array = [];
-  function addRow() {
-    const table = document.getElementById('studentTable');
-    const newRow = table.insertRow(); // Tạo một hàng mới
-
-    const cell1 = newRow.insertCell(0); // Tạo ô thứ nhất
-    cell1.textContent = prompt("Nhập Mã học viên: ");
-    array.push(cell1.textContent);
-    console.log(array);
-
-    const cell2 = newRow.insertCell(1); // Tạo ô thứ hai
-    cell2.textContent = prompt("Nhập Tên học viên: ");
-
-    const cell3 = newRow.insertCell(2); // Tạo ô thứ ba
-    cell3.textContent = prompt("Nhập Lớp học viên: ");
-
-    const cell4 = newRow.insertCell(2);
-    cell4.textContent = prompt("Nhập Email học viên: ");
-
-    const cell5 = newRow.insertCell(2);
-    cell5.textContent = prompt("Nhập Ngày sinh học viên: ");
-
-    const cell6 = newRow.insertCell(2);
-    cell6.textContent = prompt("Nhập Module học viên: ");
+  class Student{
+    constructor(idcode,name,classId,email,date,module){
+      this.idcode = idcode;
+      this.name = name;
+      this.classId = classId;
+      this.email = email;
+      this.date =date;
+      this.module = module;
+    }
+    showStudent(){
+      var table = document.getElementById("mystudent").innerHTML +=
+              '<td>' + this.idcode + '</td>' +
+              '<td>' + this.name + '</td>' +
+              '<td>' + this.classId + '</td>' +
+              '<td>' + this.email + '</td>' +
+              '<td>' + this.date + '</td>' +
+              '<td>' + this.module + '</td>';
+    }
   }
+  var ArrayStudent =[];
+  //Hàm Thêm học viên mới
+  function AddStudent(){
+    var id = prompt("Nhập Mã học viên có chứa: HV-XXXX ; XXXX là 4 chữ số");
+    if(!validCodeStudent(id)){
+      alert("Code invaild format");
+      return;
+    }
+    var name = prompt("Nhập Tên học viên: ");
+    if(!validNameStudent(name)){
+      alert("Tên học viên không hợp lệ")
+      return;
+    }
+    var classId = prompt("Nhập Lớp học viên: ");
+    var email = prompt("Nhập Email học viên: ");
+    var date = prompt("Nhập Ngày sinh học viên: ");
+    if(!checkdate(date)){
+      alert("Ngày sinh không đúng định dạng")
+      return;
+    }
+    var module = prompt("Nhập Module học viên: ");
+    if(!checknumber(module)){
+      alert("Module nhập sai định dạng!")
+      return;
+    }
+
+    ArrayStudent.push(new Student(id,name,classId,email,date,module))
+    listAll();
+    console.log(ArrayStudent)
+  }
+  //Học viên hiển thị lúc đầu
+  ArrayStudent.push(new Student("HV-0001","Nguyễn Văn A","C1022G1","nguyenvana@gmail.com","01/01/2004",1))
+  ArrayStudent.push(new Student("HV-0002","Nguyễn Văn B","C1122G1","nguyenvanb@gmail.com","02/02/2004",2))
+  ArrayStudent.push(new Student("HV-0003","Nguyễn Thị C","C1222G1","nguyenthic@gmail.com","03/03/2004",3))
 
 
-  function Edit() {
-    const table = document.getElementById('studentTable');
-    var check =false;
-    var index;
+  //Hàm sửa thông tin học viên
+  function EditStudent(){
+    var check = false,index;
     var f = prompt("Nhập Mã học viên để sửa thông tin: ")
-    for(let i=0;i<array.length;i++){
-      if(f === array[i]){
+    for(let i=0;i<ArrayStudent.length;i++){
+      if(f === ArrayStudent[i].idcode){
         check = true;
         index = i;
         break;
       }
     }
     if(check){
-      const row = table.rows[index+1]; // Truy cập hàng thứ hai
-      console.log(array)
-      const cell2 = row.cells[1]; // Truy cập ô thứ hai trong hàng
-      cell2.textContent = prompt("Sửa Tên học viên: ");
-      const cell3 = row.cells[2]; // Truy cập ô thứ hai trong hàng
-      cell3.textContent = prompt("Sửa Lớp học viên: ")
+      var name = prompt("Nhập Tên học viên: ");
+      if(!validNameStudent(name)){
+        alert("Tên học viên không hợp lệ")
+        return;
+      }
+      var classId = prompt("Nhập Lớp học viên: ");
+      var email = prompt("Nhập Email học viên: ");
+      var date = prompt("Nhập Ngày sinh học viên: ");
+      if(!checkdate(date)){
+        alert("Ngày sinh không đúng định dạng")
+        return;
+      }
+      var module = prompt("Nhập Module học viên: ");
+      if(!checknumber(module)){
+        alert("Module nhập sai định dạng!")
+        return;
+      }
+      ArrayStudent[index] = new Student(f,name,classId,email,date,module)
+      document.getElementById("mystudent").innerHTML ="";
+
+
     }else{
       alert("Mã học viên không tồn tại!")
     }
-
+    console.log(ArrayStudent);
+    listAll();
   }
-
-  function Delete () {
-    var check =false;
-    var index;
-    var u = prompt("Nhập Mã học viên để xóa: ")
-    for(let i=0;i<array.length;i++){
-      if(u === array[i]){
+  // Hàm xóa thông tin học viên
+  function DeleteStudent(){
+    var check = false,index;
+    var f = prompt("Nhập Mã học viên để sửa thông tin: ")
+    for(let i=0;i<ArrayStudent.length;i++){
+      if(f === ArrayStudent[i].idcode){
         check = true;
-        index = i + 1;
+        index = i;
         break;
       }
     }
     if(check){
-      document.getElementById("studentTable").deleteRow(index);
-      array.splice(index -1,1)
-      console.log(array)
+      ArrayStudent.splice(index,1)
     }else{
       alert("Mã học viên không tồn tại!")
     }
+    listAll();
+    console.log(ArrayStudent);
+
   }
+
+  //Các hàm kiểm tra giá trị được nhập vào
+  function validCodeStudent(val){
+    console.log(/^HV-\d{4}$/.test(val));
+    return /^HV-\d{4}$/.test(val);
+  }
+  function validNameStudent(val){
+    return val.length < 50;
+  }
+  function checknumber(val){
+    return /^[1-6]$/.test(val)
+  }
+  function checkdate(val){
+    return  /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/.test(val)
+  }
+
+  function checkId(val){
+    for(let i=0;i<ArrayStudent.length;i++){
+      if(val === ArrayStudent[i].idcode){
+        return val = true;
+        break;
+      }
+    }
+  }
+  // Hàm hiển thị toàn bộ danh sách
+  function listAll(){
+    var table = document.getElementById("mystudent").innerHTML =
+            '<tr>'+
+            '<th>'+'Mã học viên'+'</th>'+
+            '<th>'+'Tên'+'</th>'+
+            '<th>'+'Lớp'+'</th>'+
+            '<th>'+'Email'+'</th>'+
+            '<th>'+'Ngày sinh'+'</th>'+
+            '<th>'+'Module'+'</th>'+
+            '</tr>';
+    for(let i=0; i<ArrayStudent.length;i++){
+      ArrayStudent[i].showStudent();
+    }
+  }
+  console.log(ArrayStudent)
+  listAll();
 </script>
 </body>
 </html>
