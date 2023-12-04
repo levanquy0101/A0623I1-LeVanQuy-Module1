@@ -142,7 +142,7 @@
         alert("Thông báo: Điện thoại "+this.namephone+" đang bị tắt. Tất cả chức năng sẽ không được hoạt động")
       }
       if(this.checkbatterry>=0 && this.checkonoff==true){
-        document.getElementById(this.battery).innerHTML=parseInt(this.checkbatterry--);
+        document.getElementById(this.battery).innerHTML=parseInt(--this.checkbatterry);
       }else{
         this.checkonoff= false;
         document.getElementById(this.phone).value="";
